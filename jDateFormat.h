@@ -3,13 +3,13 @@
 //  The MIT License
 //  © Martin Kiss
 //
-//  Never ever write format strings by hand. Is it yyyy or YYYY? HH or hh? Month is M or m?
-//  - Use jYear and avoid Week Of the Year bug. Use jYearOfWeek to have that bug anyway.
-//  - Use jHour_12 and jHour_24 instead of hh or HH.
+//  Never again write date formats by hand. Is it yyyy or YYYY? Is 24-hour clock HH or hh? Month is M or m?
+//  - Use jYear and avoid Week Of Year bug. Use jYearOfWeek to have that bug anyway.
+//  - Use jHour_12_Padded and jHour_24_Padded instead of hh or HH.
 //  - Use jMonth and jMinute instead of M or m.
 //
 //  These macros produce NSString literals, so it’s easy to chain them:
-//    dateFormatter.dateFormat = jHour_12 jColon jMinute_Padded jPeriod;
+//    dateFormatter.dateFormat = jHour_12 @":" jMinute_Padded jPeriod;
 //
 //  Source: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 //
