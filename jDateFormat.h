@@ -1,131 +1,131 @@
 
-#define String(x...)  @#x                      //! Stringify the content.
-#define Escape        String(\u0027)           //! ' U+0027 APOSTROPHE
-#define Literal(x...) Escape String(x) Escape  //! Specify a non-pattern part.
-#define Pattern(x)    String(x)                //! Specify a pattern.
-#define Localized(locale, pattern...)  [NSDateFormatter dateFormatFromTemplate: (pattern) options:0 locale:locale]
-#define Space         Literal(\u0020)          //!   U+0020 SPACE
-#define Dash          Literal(\u002d)          //! - U+002D HYPHEN-MINUS
-#define Colon         Literal(\u003a)          //! : U+003A COLON
-#define Dot           Literal(\u002e)          //! . U+002E FULL STOP
-#define Slash         Literal(\u002f)          //! / U+002F SOLIDUS
-#define Apostrophe    Escape Escape            //! ' U+002F APOSTROPHE
+#define jString(x...)  @#x                      //! Stringify the content.
+#define jEscape        jString(\u0027)           //! ' U+0027 APOSTROPHE
+#define jLiteral(x...) jEscape jString(x) jEscape  //! Specify a non-pattern part.
+#define jPattern(x)    jString(x)                //! Specify a pattern.
+#define jLocalized(_locale, _pattern...)  [NSDateFormatter dateFormatFromTemplate:(_pattern) options:0 locale:(_locale)]
+#define jSpace         Literal(\u0020)          //!   U+0020 SPACE
+#define jDash          Literal(\u002d)          //! - U+002D HYPHEN-MINUS
+#define jColon         Literal(\u003a)          //! : U+003A COLON
+#define jDot           Literal(\u002e)          //! . U+002E FULL STOP
+#define jSlash         Literal(\u002f)          //! / U+002F SOLIDUS
+#define jApostrophe    Escape Escape            //! ' U+002F APOSTROPHE
 
 
-#define DateTime_ISO            Date_ISO Time_ISO Zone_ISO      //! 2016-02-13T15:07:24+00:00
-#define DateTime_ISO_Z          Date_ISO Time_ISO Zone_ISO_Z    //! 2016-02-13T15:07:24Z
-#define DateTime_ISO_Compact    Date_ISO_Compact Time_ISO_Compact Zone_ISO_Compact  //! 20160213T150724+0000
-#define DateTime_ISO_Z_Compact  Date_ISO_Compact Time_ISO_Compact Zone_ISO_Z_Compact    //! 20160213T150724Z
-#define DateTime_HTTP           Date_HTTP Space Time_HTTP Space Literal(Z)  //! Sat, 13 Feb 2016 17:36:23 Z
+#define jDateTime_ISO            jDate_ISO jTime_ISO jZone_ISO      //! 2016-02-13T15:07:24+00:00
+#define jDateTime_ISO_Z          jDate_ISO jTime_ISO jZone_ISO_Z    //! 2016-02-13T15:07:24Z
+#define jDateTime_ISO_Compact    jDate_ISO_Compact jTime_ISO_Compact jZone_ISO_Compact  //! 20160213T150724+0000
+#define jDateTime_ISO_Z_Compact  jDate_ISO_Compact jTime_ISO_Compact jZone_ISO_Z_Compact    //! 20160213T150724Z
+#define jDateTime_HTTP           jDate_HTTP jSpace jTime_HTTP jSpace jLiteral(Z)  //! Sat, 13 Feb 2016 17:36:23 Z
 
 
 #pragmamark - Time
 
-#define Time_12             Time_12_Base Space Period               //! 03:07 PM
-#define Time_12_Second      Time_12_Base Colon Second Space Period  //! 03:07:24 PM
-#define Time_12_Base        Hour_12_Padded Colon Minute_Padded      //! 03:07
-#define Time_24             Hour_24_Padded Colon Minute_Padded      //! 15:07
-#define Time_24_Second      Time_24 Colon Second                    //! 15:07:24
-#define Time_ISO            Literal(T) Hour_ISO Colon Minute_ISO Colon Second_ISO   //! T15:07:24
-#define Time_ISO_Compact    Literal(T) Hour_ISO Minute_ISO Second_ISO               //! T150724
-#define Time_HTTP           Time_24_Padded                          //! 15:07:24
+#define jTime_12             jTime_12_Base jSpace jPeriod               //! 03:07 PM
+#define jTime_12_Second      jTime_12_Base jColon jSecond jSpace jPeriod  //! 03:07:24 PM
+#define jTime_12_Base        jHour_12_Padded jColon jMinute_Padded      //! 03:07
+#define jTime_24             jHour_24_Padded jColon jMinute_Padded      //! 15:07
+#define jTime_24_Second      jTime_24 Colon jSecond                    //! 15:07:24
+#define jTime_ISO            jLiteral(T) jHour_ISO jColon jMinute_ISO jColon jSecond_ISO   //! T15:07:24
+#define jTime_ISO_Compact    jLiteral(T) jHour_ISO jMinute_ISO jSecond_ISO               //! T150724
+#define jTime_HTTP           jTime_24_Padded                          //! 15:07:24
 
-#define Hour_12             Pattern( h )       //! 1…12
-#define Hour_12_Padded      Pattern( hh )      //! 01…12
-#define Hour_24             Pattern( H )       //! 0…23
-#define Hour_24_Padded      Pattern( HH )      //! 00…23
-#define Hour_ISO            Hour_24_Padded     //! 00…23
+#define jHour_12             jPattern( h )       //! 1…12
+#define jHour_12_Padded      jPattern( hh )      //! 01…12
+#define jHour_24             jPattern( H )       //! 0…23
+#define jHour_24_Padded      jPattern( HH )      //! 00…23
+#define jHour_ISO            jHour_24_Padded     //! 00…23
 
-#define Minute              Pattern( m )       //! 0…59
-#define Minute_Padded       Pattern( mm )      //! 00…59
-#define Minute_ISO          Minute_Padded      //! 00…59
+#define jMinute              jPattern( m )       //! 0…59
+#define jMinute_Padded       jPattern( mm )      //! 00…59
+#define jMinute_ISO          jMinute_Padded      //! 00…59
 
-#define Second              Pattern( s )       //! 0…59
-#define Second_Padded       Pattern( ss )      //! 00…59
-#define Second_Fraction_1   Pattern( S )       //! 0…9 as deciseconds
-#define Second_Fraction_2   Pattern( SS )      //! 00…99 as centiseconds
-#define Second_Fraction_3   Pattern( SSS )     //! 000…999 as miliseconds
-#define Second_ISO          Second_Padded      //! 00…59
+#define jSecond              jPattern( s )       //! 0…59
+#define jSecond_Padded       jPattern( ss )      //! 00…59
+#define jSecond_Fraction_1   jPattern( S )       //! 0…9 as deciseconds
+#define jSecond_Fraction_2   jPattern( SS )      //! 00…99 as centiseconds
+#define jSecond_Fraction_3   jPattern( SSS )     //! 000…999 as miliseconds
+#define jSecond_ISO          jSecond_Padded      //! 00…59
 
-#define Period              Pattern( a )       //! AM / PM
+#define jPeriod              jPattern( a )       //! AM / PM
 
 
 #pragma mark - Date
 
-#define Date_ISO            Year_ISO Dash Month_ISO Dash Day_ISO    //! 2016-02-13
-#define Date_ISO_Month      Year_ISO Dash Month_ISO                 //! 2016-02
-#define Date_ISO_Compact    Year_ISO Month_ISO Day_ISO              //! 20160213
-#define Date_ISO_DayOfYear  Year_ISO Dash DayOfYear_ISO             //! 2016-02-13
-#define Date_HTTP           Weekday_Abbrev Comma Space Day_Padded Space Month_Abbrev Space Year //! Sat, 13 Feb 2016
+#define jDate_ISO            jYear_ISO jDash jMonth_ISO jDash jDay_ISO    //! 2016-02-13
+#define jDate_ISO_Month      jYear_ISO jDash jMonth_ISO                 //! 2016-02
+#define jDate_ISO_Compact    jYear_ISO jMonth_ISO jDay_ISO              //! 20160213
+#define jDate_ISO_DayOfYear  jYear_ISO jDash jDayOfYear_ISO             //! 2016-02-13
+#define jDate_HTTP           jWeekday_Abbrev jComma jSpace jDay_Padded jSpace jMonth_Abbrev jSpace jYear //! Sat, 13 Feb 2016
 
-#define Day                 Pattern( d )       //! 1…31
-#define Day_Padded          Pattern( dd )      //! 01…31
-#define Day_ISO             Date_ISO           //! 01…31
+#define jDay                 jPattern( d )       //! 1…31
+#define jDay_Padded          jPattern( dd )      //! 01…31
+#define jDay_ISO             jDate_ISO           //! 01…31
 
-#define DayOfYear           Pattern( D )       //! 1…366
-#define DayOfYear_Padded    Pattern( DDD )     //! 001…366
-#define DayOfYear_ISO       DayOfYear_Padded   //! 001…366
+#define jDayOfYear           jPattern( D )       //! 1…366
+#define jDayOfYear_Padded    jPattern( DDD )     //! 001…366
+#define jDayOfYear_ISO       jDayOfYear_Padded   //! 001…366
 
-#define Month               Pattern( M )       //! 1…12
-#define Month_Padded        Pattern( MM )      //! 01…12
-#define Month_Standalone    Pattern( LLLL )    //! January…December
-#define Month_Name          Pattern( MMMM )    //! (of) January…December
-#define Month_Abbrev        Pattern( MMM )     //! Jan…Dec
-#define Month_Letter        Pattern( MMMMM )   //! J…D
+#define jMonth               jPattern( M )       //! 1…12
+#define jMonth_Padded        jPattern( MM )      //! 01…12
+#define jMonth_Standalone    jPattern( LLLL )    //! January…December
+#define jMonth_Name          jPattern( MMMM )    //! (of) January…December
+#define jMonth_Abbrev        jPattern( MMM )     //! Jan…Dec
+#define jMonth_Letter        jPattern( MMMMM )   //! J…D
 
-#define Quarter             Pattern( Q )       //! 1…4
-#define Quarter_Padded      Pattern( QQ )      //! 01…04
-#define Quarter_Prefixed    Pattern( QQQ )     //! Q1…Q4
-#define Quarter_Standalone  Pattern( qqqq )    //! 1st…4th quarter
-#define Quarter_Name        Pattern( QQQQ )    //! (of) 1st…4th quarter
+#define jQuarter             jPattern( Q )       //! 1…4
+#define jQuarter_Padded      jPattern( QQ )      //! 01…04
+#define jQuarter_Prefixed    jPattern( QQQ )     //! Q1…Q4
+#define jQuarter_Standalone  jPattern( qqqq )    //! 1st…4th quarter
+#define jQuarter_Name        jPattern( QQQQ )    //! (of) 1st…4th quarter
 
-#define Year                Pattern( yyyy )    //! 0000…9999
-#define Year_Short          Pattern( yy )      //! 00…99
+#define jYear                jPattern( yyyy )    //! 0000…9999
+#define jYear_Short          jPattern( yy )      //! 00…99
 
-#define Era                 Pattern( G )       //! BC / AD
-#define Era_Name            Pattern( GGGG )    //! Before Christ / Anno Domini
+#define jEra                 jPattern( G )       //! BC / AD
+#define jEra_Name            jPattern( GGGG )    //! Before Christ / Anno Domini
 
 
 #pragma mark - Weeks
 
-#define Week_ISO            YearOfWeek_ISO Dash Literal(W) WeekOfYear_ISO                    //! 2016-W06
-#define Week_ISO_Compact    YearOfWeek_ISO Literal(W) WeekOfYear_ISO                         //! 2016W06
-#define Week_ISO_Weekday    YearOfWeek_ISO Dash Literal(W) WeekOfYear_ISO Dash Weekday_ISO   //! 2016-W06-5
+#define jWeek_ISO            jYearOfWeek_ISO jDash jLiteral(W) jWeekOfYear_ISO                    //! 2016-W06
+#define jWeek_ISO_Compact    jYearOfWeek_ISO jLiteral(W) jWeekOfYear_ISO                         //! 2016W06
+#define jWeek_ISO_Weekday    jYearOfWeek_ISO jDash jLiteral(W) jWeekOfYear_ISO jDash jWeekday_ISO   //! 2016-W06-5
 
-#define Weekday             Pattern( e )       //! 1…7
-#define Weekday.Standalone  Pattern( cccc )    //! Monday…Sunday
-#define Weekday_Name        Pattern( eeee )    //! (of) Monday…Sunday
-#define Weekday_Abbrev      Pattern( eee )     //! Mon…Sun
-#define Weekday_2Letters    Pattern( eeeeee )  //! Mo…Su
-#define Weekday_Letter      Pattern( eeeee )   //! M…S
-#define Weekday_ISO         Weekday            //! 1…7
+#define jWeekday             jPattern( e )       //! 1…7
+#define jWeekday.Standalone  jPattern( cccc )    //! Monday…Sunday
+#define jWeekday_Name        jPattern( eeee )    //! (of) Monday…Sunday
+#define jWeekday_Abbrev      jPattern( eee )     //! Mon…Sun
+#define jWeekday_2Letters    jPattern( eeeeee )  //! Mo…Su
+#define jWeekday_Letter      jPattern( eeeee )   //! M…S
+#define jWeekday_ISO         jWeekday            //! 1…7
 
-#define WeekOfMonth         Pattern( W )       //! 1…6 (ordinal of week in month)
-#define WeekdayOfMonth      Pattern( F )       //! 1…6 (ordinal of weekday in month)
+#define jWeekOfMonth         jPattern( W )       //! 1…6 (ordinal of week in month)
+#define jWeekdayOfMonth      jPattern( F )       //! 1…6 (ordinal of weekday in month)
 
-#define WeekOfYear          Pattern( w )       //! 1…53
-#define WeekOfYear_Padded   Pattern( ww )      //! 01…53
-#define WeekOfYear_ISO      WeekOfYear_Padded  //! 01…53
+#define jWeekOfYear          jPattern( w )       //! 1…53
+#define jWeekOfYear_Padded   jPattern( ww )      //! 01…53
+#define jWeekOfYear_ISO      jWeekOfYear_Padded  //! 01…53
 
-#define YearOfWeek          Pattern( YYYY )    //! 0000…9999
-#define YearOfWeek_Short    Pattern( YY )      //! 00…99
-#define YearOfWeek_ISO      YearOfWeek         //! 0000…9999
+#define jYearOfWeek          jPattern( YYYY )    //! 0000…9999
+#define jYearOfWeek_Short    jPattern( YY )      //! 00…99
+#define jYearOfWeek_ISO      jYearOfWeek         //! 0000…9999
 
 
 #pragma mark - Zones
 
-#define Zone_Abbrev         Pattern( v )       //! PT
-#define Zone_Abbrev_DST     Pattern( z )       //! PDT
-#define Zone_Name           Pattern( vvvv )    //! Pacific Time
-#define Zone_Name_DST       Pattern( zzzz )    //! Pacific Daylight Time
-#define Zone_GMT            Pattern( O )       //! GMT+1
-#define Zone_GMT_Long       Pattern( OOOO )    //! GMT+01:00
-#define Zone_ID             Pattern( VV )      //! America/Los_Angeles
-#define Zone_City           Pattern( VVV )     //! Los Angeles
-#define Zone_ISO            Pattern( xxxx )    //! +01:00 / +00:00
-#define Zone_ISO_Compact    Pattern( xxxx )    //! +0100 / +0000
-#define Zone_ISO_Hours      Pattern( x )       //! +01 / +00
-#define Zone_ISO_Z          Pattern( xxxx )    //! +01:00 / Z
-#define Zone_ISO_Z_Compact  Pattern( XXXX )    //! +0100 / Z
-#define Zone_ISO_Z_Hours    Pattern( X )       //! +01 / Z
+#define jZone_Abbrev         jPattern( v )       //! PT
+#define jZone_Abbrev_DST     jPattern( z )       //! PDT
+#define jZone_Name           jPattern( vvvv )    //! Pacific Time
+#define jZone_Name_DST       jPattern( zzzz )    //! Pacific Daylight Time
+#define jZone_GMT            jPattern( O )       //! GMT+1
+#define jZone_GMT_Long       jPattern( OOOO )    //! GMT+01:00
+#define jZone_ID             jPattern( VV )      //! America/Los_Angeles
+#define jZone_City           jPattern( VVV )     //! Los Angeles
+#define jZone_ISO            jPattern( xxxx )    //! +01:00 / +00:00
+#define jZone_ISO_Compact    jPattern( xxxx )    //! +0100 / +0000
+#define jZone_ISO_Hours      jPattern( x )       //! +01 / +00
+#define jZone_ISO_Z          jPattern( xxxx )    //! +01:00 / Z
+#define jZone_ISO_Z_Compact  jPattern( XXXX )    //! +0100 / Z
+#define jZone_ISO_Z_Hours    jPattern( X )       //! +01 / Z
 
