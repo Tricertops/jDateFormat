@@ -4,7 +4,7 @@
 //  © Martin Kiss
 //
 //  Never again write date formats by hand. Is it yyyy or YYYY? Is 24-hour clock HH or hh? Month is M or m?
-//  - Use jYear and avoid Week Of Year bug. Use jYearOfWeek to have that bug anyway.
+//  - Use jYear and avoid Year Of Week bug. Use jYearOfWeek to have that bug anyway.
 //  - Use jHour_12_Padded and jHour_24_Padded instead of hh or HH.
 //  - Use jMonth and jMinute instead of M or m.
 //

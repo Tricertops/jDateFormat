@@ -5,7 +5,7 @@ Never again write format strings by hand. Is it `yyyy` or `YYYY`? Which one is 2
 
 This project provides macros for (almost) every date format pattern available. They are named intuitively and their results are documented.
 
-- Use `jYear` and avoid _Week Of Year_ bug. Use `jYearOfWeek` to have that bug anyway.
+- Use `jYear` and avoid _Year Of Week_ bug. Use `jYearOfWeek` to have that bug anyway.
 - Use `jHour_12_Padded` and `jHour_24_Padded` instead of `hh` or `HH`.
 - Use `jMonth` and `jMinute` instead of `M` or `m`.
 
