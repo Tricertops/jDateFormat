@@ -12,14 +12,14 @@ This project provides macros for (almost) every date format pattern available. T
 These macros produce `NSString` literals, so it’s easy to chain them:
 
 ```objc
-dateFormatter.dateFormat = jHour_12 @":" jMinute_Padded jPeriod;
+dateFormatter.dateFormat = jHour_12 @":" jMinute_Padded @" " jPeriod;
 ```
 
 List of Patterns
 ----------
 
 - `jHour` – 12-hour and 24-hour formats with optional padding.
-- `jMinute` – Minute with opzional padding.
+- `jMinute` – Minutes with optional padding.
 - `jSecond` – Seconds with optional padding and fractions.
 - `jPeriod` – AM vs. PM for 12-hour clock.
 - `jDay` and `jDayOfYear` – Day of month and year with optional padding.

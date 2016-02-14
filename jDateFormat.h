@@ -9,7 +9,7 @@
 //  - Use jMonth and jMinute instead of M or m.
 //
 //  These macros produce NSString literals, so it’s easy to chain them:
-//    dateFormatter.dateFormat = jHour_12 @":" jMinute_Padded jPeriod;
+//    dateFormatter.dateFormat = jHour_12 @":" jMinute_Padded @" " jPeriod;
 //
 //  Source: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 //
@@ -87,6 +87,7 @@
 #define jMonth_Name        jPattern( MMMM )   //! (of) January…December
 #define jMonth_Abbrev      jPattern( MMM )    //! Jan…Dec
 #define jMonth_Letter      jPattern( MMMMM )  //! J…D
+#define jMonth_ISO         jMonth_Padded      //! 01…12
 
 #define jQuarter             jPattern( Q )     //! 1…4
 #define jQuarter_Padded      jPattern( QQ )    //! 01…04
@@ -96,6 +97,7 @@
 
 #define jYear        jPattern( yyyy )  //! 0000…9999
 #define jYear_Short  jPattern( yy )    //! 00…99
+#define jYear_ISO    jYear             //! 0000…9999
 
 #define jEra       jPattern( G )     //! BC / AD
 #define jEra_Name  jPattern( GGGG )  //! Before Christ / Anno Domini
