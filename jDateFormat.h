@@ -9,7 +9,7 @@
 //  - Use jMonth and jMinute instead of M or m.
 //
 //  These macros produce NSString literals, so it’s easy to chain them:
-//    dateFormatter.dateFormat = jHour_12 @":" jMinute_Padded @" " jPeriod;
+//    dateFormatter.dateFormat = jHour_12 ":" jMinute_Padded " " jPeriod;
 //
 //  Source: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 //
@@ -110,11 +110,11 @@
 #define jWeek_ISO_Weekday  jYearOfWeek_ISO jDash jLiteral(W) jWeekOfYear_ISO jDash jWeekday_ISO  //! 2016-W06-5
 
 #define jWeekday             jPattern( e )       //! 1…7
-#define jWeekday_Standalone  jPattern( cccc )    //! Monday…Sunday
-#define jWeekday_Name        jPattern( eeee )    //! (of) Monday…Sunday
-#define jWeekday_Abbrev      jPattern( eee )     //! Mon…Sun
-#define jWeekday_2Letters    jPattern( eeeeee )  //! Mo…Su
-#define jWeekday_Letter      jPattern( eeeee )   //! M…S
+#define jWeekday_Standalone  jPattern( cccc )    //! Sunday…Saturday
+#define jWeekday_Name        jPattern( eeee )    //! (of) Sunday…Saturday
+#define jWeekday_Abbrev      jPattern( eee )     //! Sun Mon Tue Wed Thu Fri Sat
+#define jWeekday_2Letters    jPattern( eeeeee )  //! Su Mo Tu We Th Fr Sa
+#define jWeekday_Letter      jPattern( eeeee )   //! S M T W T F S
 #define jWeekday_ISO         jWeekday            //! 1…7
 
 #define jWeekOfMonth     jPattern( W )  //! 1…6
