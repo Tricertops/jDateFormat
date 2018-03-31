@@ -20,7 +20,7 @@
 #define jString(x...)  @#x
 #define jSpace         @" "
 #define jEscape        @"'"
-#define jApostrophe    Escape Escape
+#define jApostrophe    jEscape jEscape
 #define jDash          jString(-)
 #define jColon         jString(:)
 #define jDot           jString(.)
@@ -75,7 +75,7 @@
 
 #define jDay         jPattern( d )   //! 1…31
 #define jDay_Padded  jPattern( dd )  //! 01…31
-#define jDay_ISO     jDate_ISO       //! 01…31
+#define jDay_ISO     jDay_Padded     //! 01…31
 
 #define jDayOfYear         jPattern( D )      //! 1…366
 #define jDayOfYear_Padded  jPattern( DDD )    //! 001…366
@@ -139,10 +139,10 @@
 #define jZone_GMT_Long       jPattern( OOOO )  //! GMT+01:00
 #define jZone_ID             jPattern( VV )    //! America/Los_Angeles
 #define jZone_City           jPattern( VVV )   //! Los Angeles
-#define jZone_ISO            jPattern( xxxx )  //! +01:00 / +00:00
-#define jZone_ISO_Compact    jPattern( xxxx )  //! +0100 / +0000
+#define jZone_ISO            jPattern( xxx )  //! +01:00 / +00:00
+#define jZone_ISO_Compact    jPattern( xx )  //! +0100 / +0000
 #define jZone_ISO_Hours      jPattern( x )     //! +01 / +00
-#define jZone_ISO_Z          jPattern( xxxx )  //! +01:00 / Z
-#define jZone_ISO_Z_Compact  jPattern( XXXX )  //! +0100 / Z
+#define jZone_ISO_Z          jPattern( XXX )  //! +01:00 / Z
+#define jZone_ISO_Z_Compact  jPattern( XX )  //! +0100 / Z
 #define jZone_ISO_Z_Hours    jPattern( X )     //! +01 / Z
 
